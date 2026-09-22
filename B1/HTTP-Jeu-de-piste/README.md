@@ -1,0 +1,1294 @@
+# TP - 01. HTTP - Le jeu de piste
+---
+
+## Mission 0: Découverte
+### Travail à faire
+#### Télécharger et installer chacun de ces outils
+Requête GET simple :
+Utiliser l’API publique JSONPlaceholder (fausse API REST pour tests).
+Tâche : Récupérer la liste des posts (GET https://jsonplaceholder.typicode.com/posts).
+Dans chacun des outils, créer une nouvelle requête GET vers cette URL
+Vous devez prendre des capture écran
+Observer :
+Comment est affichée la réponse ?
+![alt text](image.png)
+![alt text](image-1.png)
+![alt text](image-2.png)
+
+
+Comment sauvegarder la requête ?
+![alt text](image-3.png)
+
+Comment organiser les requêtes (dossiers/collections) ?
+Requête POST avec données :
+Envoyer un nouveau "post" à l’API ( POST https://jsonplaceholder.typicode.com/posts ).
+Corps de la requête (JSON) :
+{
+}
+"title": "Mon premier post",
+"body": "Créé avec [Postman/Bruno/Insomnia]",
+"userId": 1
+Headers : Ajouter Content-Type: application/json .
+Observer :
+Comment ajouter des headers ?
+Comment formater le corps de la requête ?
+Attention
+Cette mission est essentielle pour découvrir le fonctionnement des API.
+Terminer cette mission avant de passer à la suite.
+Mission 1: Le jeu de piste du protocole HTTP
+
+
+L'enseignant va vous fournir une URL de départ.
+A partir d'un des outils vus précédemment, vous devrez suivre les indications données en réponses à vos requêtes.
+Chaque étape vous permettra de découvrir le monde merveilleux du HTTP
+
+```
+{
+  "info": {
+    "_postman_id": "20920fee-9a88-4270-af83-95e9a77908d6",
+    "name": "My Collection",
+    "description": "### Welcome to Postman! This is your first collection.\n\nCollections are your starting point for building and testing APIs. You can use this one to:\n\n• Group related requests  \n• Test your API in real-world scenarios  \n• Document and share your requests\n\nUpdate the name and overview whenever you’re ready to make it yours.\n\n[Learn more about Postman Collections.](https://learning.postman.com/docs/collections/collections-overview/)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "51850210"
+  },
+  "item": [
+    {
+      "name": "jeu de piste",
+      "item": [
+        {
+          "name": "étape 1",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "text/html",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text",
+                "disabled": true
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "url": {
+              "raw": "172.16.3.254:8001/bienvenue",
+              "host": [
+                "172",
+                "16",
+                "3",
+                "254"
+              ],
+              "port": "8001",
+              "path": [
+                "bienvenue"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "réponse",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "text/html",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text",
+                    "disabled": true
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
+                "url": {
+                  "raw": "172.16.3.254:8001/bienvenue",
+                  "host": [
+                    "172",
+                    "16",
+                    "3",
+                    "254"
+                  ],
+                  "port": "8001",
+                  "path": [
+                    "bienvenue"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 15 Sep 2026 07:34:47 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"etape\": \"Etape 1: Introduction\",\n    \"message\": \"Bienvenue dans le jeu de piste HTTP !\",\n    \"cours\": \"Le protocole HTTP (Hypertext Transfer Protocol) est utilisé pour la communication sur le web. Il est indispensable de maitriser ce protocole pour appréhender le développement web. 📖 https://www.it-connect.fr/le-protocole-http-pour-les-debutants/\",\n    \"next_step\": \"Pour passer à l'étape suivante, faites une requête GET à l'URL \\\"/decouverte-des-parametres\\\" avec un paramètre \\\"nom\\\" dans l'URL, par exemple: /decouverte-des-parametres?nom=VotreNom. Attention, le paramètre \\\"nom\\\" est obligatoire pour réussir l'étape suivante.\",\n    \"tips\": \"https://developer.mozilla.org/fr/docs/Web/HTTP/Reference/Methods/GET\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "étape 2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "text/html",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text",
+                "disabled": true
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "url": {
+              "raw": "172.16.3.254:8001/decouverte-des-parametres?nom=a",
+              "host": [
+                "172",
+                "16",
+                "3",
+                "254"
+              ],
+              "port": "8001",
+              "path": [
+                "decouverte-des-parametres"
+              ],
+              "query": [
+                {
+                  "key": "nom",
+                  "value": "a"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "réponse",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "text/html",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text",
+                    "disabled": true
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
+                "url": {
+                  "raw": "172.16.3.254:8001/decouverte-des-parametres?nom=a",
+                  "host": [
+                    "172",
+                    "16",
+                    "3",
+                    "254"
+                  ],
+                  "port": "8001",
+                  "path": [
+                    "decouverte-des-parametres"
+                  ],
+                  "query": [
+                    {
+                      "key": "nom",
+                      "value": "a"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 15 Sep 2026 07:37:41 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"etape\": \"Etape 2: Paramètres dans l'URL\",\n    \"message\": \"Bravo a! Vous avez réussi la première étape. Maintenant, explorons l'utilisation des paramètres dans l'URL.\",\n    \"cours\": \"Les paramètres dans l'URL permettent de transmettre des informations à travers les requêtes HTTP. Vous pouvez les utiliser pour personnaliser vos requêtes.\",\n    \"success\": \"✅✅✅ Le paramètre \\\"nom\\\" est présent dans l'URL. Vous pouvez passer à l'étape suivante. ✅✅✅\",\n    \"next_step\": \"Pour passer à l'étape suivante, vous devez faire une requête GET à l'URL \\\"/plusieurs-parametres\\\" avec un paramètre \\\"prenom\\\" dans l'URL et un paramètre \\\"age\\\".Cela vous permettra de comprendre comment les paramètres dans l'URL fonctionnent pour personnaliser vos requêtes HTTP. N'oubliez pas que les paramètres dans l'URL sont souvent utilisés pour filtrer ou personnaliser les données que vous récupérez du serveur. En utilisant ces paramètres, vous pourrez mieux comprendre comment interagir avec les API RESTful et les serveurs web. Pour plus d'informations sur les paramètres dans l'URL, vous pouvez consulter la documentation officielle de MDN : https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/GET\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "étape 3",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "text/html",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text",
+                "disabled": true
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "url": {
+              "raw": "172.16.3.254:8001/plusieurs-parametres?prenom=a&age=19",
+              "host": [
+                "172",
+                "16",
+                "3",
+                "254"
+              ],
+              "port": "8001",
+              "path": [
+                "plusieurs-parametres"
+              ],
+              "query": [
+                {
+                  "key": "prenom",
+                  "value": "a"
+                },
+                {
+                  "key": "age",
+                  "value": "19"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "réponse",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "text/html",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text",
+                    "disabled": true
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
+                "url": {
+                  "raw": "172.16.3.254:8001/plusieurs-parametres?prenom=a&age=19",
+                  "host": [
+                    "172",
+                    "16",
+                    "3",
+                    "254"
+                  ],
+                  "port": "8001",
+                  "path": [
+                    "plusieurs-parametres"
+                  ],
+                  "query": [
+                    {
+                      "key": "prenom",
+                      "value": "a"
+                    },
+                    {
+                      "key": "age",
+                      "value": "19"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 15 Sep 2026 07:39:05 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"etape\": \"Méthodes HTTP - GET\",\n    \"message\": \"La deuxième étape est réussie ! Maintenant, explorons l'utilisation de la méthode GET pour faire des requêtes HTTP.\",\n    \"cours\": \"La méthode GET est utilisée pour récupérer des données à partir du serveur. Elle est souvent utilisée pour les requêtes de lecture.\",\n    \"success\": \"✅✅✅ Vous avez utilisé la méthode GET avec les bons paramètres. Vous pouvez passer à l'étape suivante. ✅✅✅\",\n    \"next_step\": \"Pour passer à l'étape suivante, vous devez faire une requête POST à l'URL \\\"/un-peu-de-post\\\"   Cela vous permettra de comprendre comment les différentes méthodes HTTP fonctionnent pour interagir avec les serveurs web. N'oubliez pas que la méthode GET est souvent utilisée pour récupérer des données du serveur, tandis que la méthode POST est utilisée pour envoyer des données au serveur. En utilisant ces méthodes avec les bons paramètres, vous pourrez mieux comprendre comment interagir avec les API RESTful et les serveurs web. Pour plus d'informations sur les méthodes HTTP et les paramètres dans l'URL, vous pouvez consulter la documentation officielle de MDN : https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/GET\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "étape 4",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "text/html",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text",
+                "disabled": true
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "url": {
+              "raw": "172.16.3.254:8001/un-peu-de-post",
+              "host": [
+                "172",
+                "16",
+                "3",
+                "254"
+              ],
+              "port": "8001",
+              "path": [
+                "un-peu-de-post"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "réponse",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "text/html",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text",
+                    "disabled": true
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
+                "url": {
+                  "raw": "172.16.3.254:8001/un-peu-de-post",
+                  "host": [
+                    "172",
+                    "16",
+                    "3",
+                    "254"
+                  ],
+                  "port": "8001",
+                  "path": [
+                    "un-peu-de-post"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 15 Sep 2026 07:40:38 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"etape\": \"Méthodes HTTP - POST\",\n    \"message\": \"La troisième étape est réussie ! Maintenant, explorons l'utilisation de la méthode POST pour faire des requêtes HTTP.\",\n    \"cours\": \"La méthode POST est utilisée pour envoyer des données au serveur, souvent utilisée pour les requêtes de création.\",\n    \"success\": \"✅✅✅ Vous avez utilisé la méthode POST. Vous pouvez passer à l'étape suivante. ✅✅✅\",\n    \"next_step\": \"Pour passer à l'étape suivante, vous devez spécifier un type de contenu \\\"application/json\\\" dans votre requête POST à l'URL \\\"/5-content-type\\\"  Cela vous permettra de comprendre comment les en-têtes HTTP fonctionnent pour spécifier le format des données envoyées au serveur. N'oubliez pas que la méthode POST est souvent utilisée pour créer de nouvelles ressources sur le serveur, tandis que la méthode PUT est utilisée pour mettre à jour des ressources existantes. En utilisant ces méthodes avec les bons types de contenu, vous pourrez mieux comprendre comment interagir avec les API RESTful et les serveurs web. Pour plus d'informations sur les méthodes HTTP et les types de contenu, vous pouvez consulter la documentation officielle de MDN : https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/POST\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "étape 5",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "text/html",
+                "type": "text",
+                "disabled": true
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "url": {
+              "raw": "172.16.3.254:8001/5-content-type",
+              "host": [
+                "172",
+                "16",
+                "3",
+                "254"
+              ],
+              "port": "8001",
+              "path": [
+                "5-content-type"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "réponse",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "text/html",
+                    "type": "text",
+                    "disabled": true
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text",
+                    "disabled": true
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
+                "url": {
+                  "raw": "172.16.3.254:8001/5-content-type",
+                  "host": [
+                    "172",
+                    "16",
+                    "3",
+                    "254"
+                  ],
+                  "port": "8001",
+                  "path": [
+                    "5-content-type"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 15 Sep 2026 07:43:01 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"etape\": \"Type de contenu - POST\",\n    \"message\": \"Vous devez spécifier le type de contenu \\\"application/json\\\".\",\n    \"cours\": \"Le type de contenu indique au serveur le format des données que vous attendez en réponse. Dans une requête POST, cela peut souvent être \\\"application/json\\\" ou \\\"text/html\\\".\",\n    \"success\": \"✅✅✅ Vous avez spécifié le bon type de contenu. Vous pouvez passer à l'étape suivante. ✅✅✅\",\n    \"next_step\": \"Pour passer à l'étape suivante, vous devez faire une requête PUT à l'URL \\\"/put-method-6\\\" en incluant un en-tête \\\"Content-Type\\\" de type \\\"text/html\\\" et un en-tête \\\"Accept\\\" de type \\\"application/json\\\". Cela vous permettra de comprendre comment les en-têtes \\\"Content-Type\\\" et \\\"Accept\\\" fonctionnent ensemble pour spécifier le format des données envoyées et reçues. N'oubliez pas que la méthode PUT est souvent utilisée pour mettre à jour des ressources sur le serveur, tandis que la méthode POST est utilisée pour créer de nouvelles ressources. En utilisant ces méthodes avec les bons types de contenu, vous pourrez mieux comprendre comment interagir avec les API RESTful et les serveurs web. Pour plus d'informations sur les méthodes HTTP et les types de contenu, vous pouvez consulter la documentation officielle de MDN : https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/PUT\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "étape 6",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "text/html",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text",
+                "disabled": true
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "url": {
+              "raw": "172.16.3.254:8001/put-method-6",
+              "host": [
+                "172",
+                "16",
+                "3",
+                "254"
+              ],
+              "port": "8001",
+              "path": [
+                "put-method-6"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "réponse",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "text/html",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text",
+                    "disabled": true
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
+                "url": {
+                  "raw": "172.16.3.254:8001/put-method-6",
+                  "host": [
+                    "172",
+                    "16",
+                    "3",
+                    "254"
+                  ],
+                  "port": "8001",
+                  "path": [
+                    "put-method-6"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 15 Sep 2026 07:32:28 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"etape\": \"Types de contenu - PUT\",\n    \"message\": \"Vous avez spécifié le type de contenu text/html dans votre requête. https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods/PUT\",\n    \"cours\": \"Lors de l'envoi de données avec la méthode PUT, vous devez indiquer au serveur le format des données que vous envoyez. Cela est souvent spécifié avec l'en-tête \\\"Content-Type\\\".\",\n    \"success\": \"✅✅✅ Vous avez spécifié le bon type de contenu et le bon en-tête Accept. Vous pouvez passer à l'étape suivante. ✅✅✅\",\n    \"next_step\": \"Pour passer à l'étape suivante, vous devez faire une requête DELETE à l'URL \\\"/et-oui-delete\\\" en incluant le paramètre \\\"filename\\\" dans l'URL. Cela vous permettra de comprendre comment les paramètres dans l'URL fonctionnent avec la méthode GET pour personnaliser vos requêtes. N'oubliez pas que la méthode GET est souvent utilisée pour récupérer des données du serveur, tandis que la méthode PUT est utilisée pour mettre à jour des ressources sur le serveur. En utilisant ces méthodes avec les bons types de contenu et les bons paramètres, vous pourrez mieux comprendre comment interagir avec les API RESTful et les serveurs web. Pour plus d'informations sur les méthodes HTTP et les types de contenu, vous pouvez consulter la documentation officielle de MDN : https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/DELETE\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "étape 7",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "text/html",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text",
+                "disabled": true
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "url": {
+              "raw": "172.16.3.254:8001/et-oui-delete?filename=a",
+              "host": [
+                "172",
+                "16",
+                "3",
+                "254"
+              ],
+              "port": "8001",
+              "path": [
+                "et-oui-delete"
+              ],
+              "query": [
+                {
+                  "key": "filename",
+                  "value": "a"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "réponse",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "text/html",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text",
+                    "disabled": true
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
+                "url": {
+                  "raw": "172.16.3.254:8001/et-oui-delete?filename=a",
+                  "host": [
+                    "172",
+                    "16",
+                    "3",
+                    "254"
+                  ],
+                  "port": "8001",
+                  "path": [
+                    "et-oui-delete"
+                  ],
+                  "query": [
+                    {
+                      "key": "filename",
+                      "value": "a"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 15 Sep 2026 07:32:54 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"etape\": \"Paramètres dans l'URL et méthode - DELETE\",\n    \"message\": \"Vous avez utilisé la méthode DELETE avec les paramètres {\\\"filename\\\":\\\"a\\\"}.\",\n    \"cours\": \"Combiner la méthode DELETE avec des paramètres dans l'URL vous permet de personnaliser davantage vos requêtes. Dans cette étape, vous avez utilisé les deux ensemble.\",\n    \"success\": \"✅✅✅ Vous avez utilisé la bonne méthode et les bons paramètres. Vous pouvez passer à l'étape suivante. ✅✅✅\",\n    \"next_step\": \"Pour passer à l'étape suivante, vous devez faire une requête PATCH à l'URL \\\"/etape8/api/users/12345\\\" en incluant un en-tête \\\"Content-Type\\\" de type \\\"application/json\\\". Cela vous permettra de comprendre comment les en-têtes \\\"Accept\\\" fonctionnent pour spécifier le format des données que vous attendez en réponse. N'oubliez pas que la méthode GET est souvent utilisée pour récupérer des données du serveur, tandis que la méthode DELETE est utilisée pour supprimer des ressources sur le serveur. En utilisant ces méthodes avec les bons types de contenu et les bons paramètres, vous pourrez mieux comprendre comment interagir avec les API RESTful et les serveurs web. Pour plus d'informations sur les méthodes HTTP et les types de contenu, vous pouvez consulter la documentation officielle de MDN : https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/GET\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "étape 8",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "text/html",
+                "type": "text",
+                "disabled": true
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"role\":\"Developer\", \"email\":\"test@test.com\"}"
+            },
+            "url": {
+              "raw": "172.16.3.254:8001/etape8/api/users/12345",
+              "host": [
+                "172",
+                "16",
+                "3",
+                "254"
+              ],
+              "port": "8001",
+              "path": [
+                "etape8",
+                "api",
+                "users",
+                "12345"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "réponse",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "text/html",
+                    "type": "text",
+                    "disabled": true
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text",
+                    "disabled": true
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"role\":\"Developer\", \"email\":\"test@test.com\"}"
+                },
+                "url": {
+                  "raw": "172.16.3.254:8001/etape8/api/users/12345",
+                  "host": [
+                    "172",
+                    "16",
+                    "3",
+                    "254"
+                  ],
+                  "port": "8001",
+                  "path": [
+                    "etape8",
+                    "api",
+                    "users",
+                    "12345"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 15 Sep 2026 07:19:50 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"etape\": \"Méthode et type de contenu - PATCH\",\n    \"message\": \"Vous avez utilisé la méthode PATCH avec le type de contenu application/json.\",\n    \"cours\": \"Cette étape combine la méthode PATCH avec la spécification du type de contenu. Cela est souvent nécessaire lors de l'envoi de données au serveur.\",\n    \"success\": \"✅✅✅ Vous avez utilisé la bonne méthode et le bon type de contenu. Vous pouvez passer à l'étape suivante. ✅✅✅Le contenu attendu dans le body correspond à la demande, bravo!\",\n    \"next_step\": \"Pour passer à l'étape suivante, vous devez faire une requête POST à l'URL \\\"/etape9\\\" en incluant un en-tête \\\"Content-Type\\\" de type \\\"application/json\\\", en fournissant la clé api dans le header: api-key: FenelonBTSSIO et en sépcifiant un User-Agent: FenelonBTSSIO-UserAgent-LaRochelle-v1.0 Dans le body, vous devez fournir un json contenant un champ \\\"name\\\" qui doit contenir \\\"Donald Duck\\\". Bonne chancz!\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "étape 9",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "api-key",
+                "value": "FenelonBTSSIO",
+                "type": "text"
+              },
+              {
+                "key": "User-Agent",
+                "value": "FenelonBTSSIO-UserAgent-LaRochelle-v1.0",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"name\":\"Donald Duck\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "172.16.3.254:8001/etape9",
+              "host": [
+                "172",
+                "16",
+                "3",
+                "254"
+              ],
+              "port": "8001",
+              "path": [
+                "etape9"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "réponse",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "api-key",
+                    "value": "FenelonBTSSIO",
+                    "type": "text"
+                  },
+                  {
+                    "key": "User-Agent",
+                    "value": "FenelonBTSSIO-UserAgent-LaRochelle-v1.0",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"name\":\"Donald Duck\"}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "172.16.3.254:8001/etape9",
+                  "host": [
+                    "172",
+                    "16",
+                    "3",
+                    "254"
+                  ],
+                  "port": "8001",
+                  "path": [
+                    "etape9"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 15 Sep 2026 07:30:33 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"etape\": \"Méthode et type de contenu - POST\",\n    \"message\": \"Vous avez utilisé la méthode POST avec le type de contenu application/json.\",\n    \"cours\": \"La méthode POST est utilisée pour soumettre des données au serveur. L'en-tête \\\"Content-Type\\\" est souvent utilisé pour spécifier le format des données envoyées.\",\n    \"success\": \"✅✅✅ Vous avez utilisé la bonne méthode et le bon type de contenu. Vous avez terminé le jeu de piste! ✅✅✅\"\n}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```

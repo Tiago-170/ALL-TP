@@ -3,7 +3,7 @@ import threading
 from queue import Queue
 
 # Demande à l'utilisateur
-target = input("Entrer l'adresse IP de la cible : «")
+target = input("Entrer l'adresse IP de la cible : ")
 # Création de la queue
 queue = Queue()
 # Liste des ports ouverts

@@ -1,7 +1,7 @@
 # Scanneur de ports en python
 
 ```
-Entrer l'adresse IP de la cible : «172.16.198.254
+Entrer l'adresse IP de la cible : 172.16.198.254
 Le port 22 est ouvert
 Le port 80 est ouvert
 Le port 3306 est ouvert

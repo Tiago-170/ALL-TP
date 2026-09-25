@@ -1,3 +1,2 @@
-# flutter_application_1
+# TP02-Game
 
-A new Flutter project.

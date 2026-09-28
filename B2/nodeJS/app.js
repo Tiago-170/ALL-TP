@@ -11,21 +11,33 @@ const server = http.createServer(
     // les paramètres req: REQUEST et res: RESPONSE
     function(req, res) 
     {   
+        
         const page = url.parse(req.url).pathname;
         console.log("Page: " + page);
         const params = querystring.parse(url.parse(req.url).query);
-        if(page == "/etape1") {
+        if(page == "/etape1" && req.headers['authorization'] == 'test') {
             res.writeHead(200, {"Content-Type": "text/plain"});
+
+            if("name" in params && params.name == "Tiago") {
+                res.end("Bonjour " + params.name + " !");
+            }
+            else {
+                res.end("Tu n'est pas le bien venue " + params.name);
+            }
+        }
+        else if(page == "/bearer-token" && req.headers['authorization'] == 'test') {
+            res.writeHead(200, {"Content-Type": "text/plain"});
+            res.end("Bearer");
+        }
+        else if(page == "/bearer-token" && req.headers['authorization'] == 'test') {
+            res.writeHead(200, {"Content-Type": "text/plain"});
+            res.end("Bearer");
         }
         else {
             res.writeHead(404, {"Content-Type": "text/plain"});
+            res.end("error 404");
         }
 
-        if("name" in params && params.name == "Tiago") {
-            res.end("Bonjour " + params.name + " !");
-        }else {
-            res.end("Tu n'est pas le bien venue " + params.name);
-        }
     }
 );
 // Démarrage du serveur sur le port 8085

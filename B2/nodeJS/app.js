@@ -25,20 +25,26 @@ const server = http.createServer(
                 res.end("Tu n'est pas le bien venue " + params.name);
             }
         }
-        else if(page == "/bearer-token" && req.headers['authorization'] == 'test') {
+        else if(page == "/bearer-token" && req.headers['authorization'] == 'Bearer test') {
             res.writeHead(200, {"Content-Type": "text/plain"});
             res.end("Bearer");
         }
-        else if(page == "/bearer-token" && req.headers['authorization'] == 'test') {
+        else if(page == "/basic-auth" && req.headers['authorization'] == `Basic ${btoa(unescape(encodeURIComponent('test:test')))}`) {
+            
             res.writeHead(200, {"Content-Type": "text/plain"});
-            res.end("Bearer");
+            res.end("basic");
+        }
+        else if(page == "/api-key" && req.headers['api-key'] == 'test') {
+            res.writeHead(200, {"Content-Type": "text/plain"});
+            res.end("API key");
         }
         else {
-            res.writeHead(404, {"Content-Type": "text/plain"});
-            res.end("error 404");
+            res.writeHead(401, {"Content-Type": "text/plain"});
+            res.end("erreur 401 : vous n'avez pas les permissions");
         }
 
     }
 );
 // Démarrage du serveur sur le port 8085
 server.listen(8085);
+console.log(`Basic ${btoa(unescape(encodeURIComponent('test:test')))}`)

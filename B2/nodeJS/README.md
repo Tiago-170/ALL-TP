@@ -58,7 +58,6 @@ requete API sécurisé par
 
 - basic-auth
 
-
 {
   "info": {
     "_postman_id": "20920fee-9a88-4270-af83-95e9a77908d6",
@@ -181,3 +180,4 @@ requete API sécurisé par
     }
   ]
 }
+```

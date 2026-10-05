@@ -4,4 +4,11 @@ class Joueur {
   int sante;
 
   Joueur(this.pseudo, this.force, this.sante);
+
+  int afficherJoueur() {
+      print('Pseudo: $pseudo');
+      print('Force: $force');
+      print('Santé: $sante%');
+    return sante;
+  }
 }

@@ -1,0 +1,77 @@
+/* Réinitialisation de base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background-color: #f4f6f8;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#answer-container {
+    width: 80%;
+    max-width: 800px;
+    min-height: 100px;
+    padding: 20px;
+
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+
+    color: #333;
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+body > div:first-child {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 80%;
+    max-width: 800px;
+    gap: 10px;
+}
+
+#message-user {
+    flex: 1;
+    height: 45px;
+    padding: 0 15px;
+
+    border: 2px solid #ddd;
+    border-radius: 8px;
+
+    font-size: 16px;
+    outline: none;
+}
+
+#message-user:focus {
+    border-color: #4f46e5;
+}
+
+#btn-submit {
+    height: 45px;
+    padding: 0 20px;
+
+    border: none;
+    border-radius: 8px;
+
+    background-color: #4f46e5;
+    color: white;
+
+    font-size: 16px;
+    cursor: pointer;
+
+    transition: background-color 0.2s ease;
+}
+
+#btn-submit:hover {
+    background-color: #3730a3;
+}

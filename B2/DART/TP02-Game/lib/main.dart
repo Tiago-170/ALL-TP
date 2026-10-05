@@ -1,6 +1,20 @@
 import 'dart:io';
 import 'Bot.dart';
 import 'Joueur.dart';
+import 'dart:math';
+
+int lancerDes(String nomJoueur) {
+  Random random = Random();
+
+  int de1 = random.nextInt(6) + 1;
+  int de2 = random.nextInt(6) + 1;
+
+  int resultat = de1 + de2;
+
+  print('$nomJoueur a lancé les dés et a obtenu $resultat');
+
+  return resultat;
+}
 
 void main() {
   Bot bot = Bot(1, 100);
@@ -13,9 +27,11 @@ void main() {
   int tour = 1;
 
   while (bot.sante > 0 && joueur.sante > 0) {
+    print('========== Tour $tour ==========');
+
     print('${joueur.pseudo}, appuyez sur entrée pour lancer les dés');
     stdin.readLineSync();
-
+    
     int degatsJoueur = lancerDes(joueur.pseudo);
 
     print('${joueur.pseudo} assène un coup sur le bot avec une force de $degatsJoueur');
@@ -32,6 +48,8 @@ void main() {
 
     print('Bot - Santé ${bot.sante}%');
 
+    print('-------------------------------');
+
     int degatsBot = lancerDes('bot');
 
     print('Le bot assène un coup à ${joueur.pseudo} avec une force de $degatsBot');
@@ -45,6 +63,12 @@ void main() {
     print('${joueur.pseudo} - Santé ${joueur.sante}%');
 
     print('Fin du tour $tour');
+
+    print('-------------------------------');
+
+    joueur.afficherJoueur();
+    print('-------------------------------');
+    bot.afficherBot();
 
     tour++;
   }

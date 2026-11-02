@@ -1,0 +1,44 @@
+/api/v1/pokemons/:
+  get:
+    summary: get every pokemons in pokedex
+    operationId: findAll
+    responses:
+      '200':
+        description:  return a json with every pokemons in pokedex
+      '429':
+        description: too Many Requests
+
+/api/v1/pokemons/random:
+  get:
+    summary: get a random pokemon in pokedex
+    operationId: findOneByRandom
+    responses:
+      '200':
+        description: return a json with random pokemon in pokedex
+      '429':
+        description: too Many Requests
+
+/api/v1/pokemons/:id:
+  get:
+    summary: get a pokemon by id
+    operationId: findOneById
+    responses:
+      '200':
+        description: return a json with the pokemon data
+      '404':
+        description: pokemon not find
+      '429':
+        description: too Many Requests
+
+/api/v1/pokemons/:name:
+  get:
+    summary: get a pokemon by name
+    operationId: findOneByName
+    responses:
+      '200':
+        description: return a json with the pokemon data
+      '404':
+        description: pokemon not find
+      '429':
+        description: too Many Requests
+      
